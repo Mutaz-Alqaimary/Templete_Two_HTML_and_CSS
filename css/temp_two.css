@@ -134,20 +134,25 @@ header nav {
 header nav .toggle-menu {
   color: white;
   font-size: 22px;
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   header nav .toggle-menu {
     display: none;
   }
 }
+header nav input {
+  -webkit-appearance: none;
+  appearance: none;
+}
 header nav ul {
   display: flex;
 }
 @media (max-width: 767px) {
-  header nav .toggle-menu + ul {
+  header nav  ul {
     display: none;
   }
-  header nav .toggle-menu:hover + ul {
+  header nav:has(input:checked, label:hover) ul.menu {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -234,19 +239,23 @@ header nav .form i {
 .landing .text .content {
   max-width: 500px;
 }
-@media (max-width: 767px) {
-  .landing .text {
-    width: 100%;
-  }
-  .landing .text .content {
-    max-width: 100%;
-  }
-}
 .landing .text .content h2 {
   font-size: 32px;
   line-height: 1.5;
   margin-bottom: 20px;
   font-weight: normal;
+}
+@media (max-width: 767px) {
+  .landing .text {
+    width: 100%;
+    padding: 20px;
+  }
+  .landing .text .content {
+    max-width: 100%;
+  }
+  .landing .text .content h2 {
+    font-size: 25px;
+  }
 }
 .landing .text .content p {
   line-height: 2;
@@ -286,6 +295,7 @@ header nav .form i {
   -o-transform: translateX(-50%);
 }
 .landing .bullets li {
+  cursor: pointer;
   width: 20px;
   height: 20px;
   border: 1px solid white;
@@ -298,6 +308,14 @@ header nav .form i {
 .landing .bullets li.active {
   background-color: var(--main-color);
   border-color: var(--main-color);
+}
+.landing .bullets li:hover {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
+}
+.landing .bullets:has(li:hover:not(li.active)) li.active {
+  background-color: transparent;
+  border-color: white;
 }
 /* End Landing */
 
